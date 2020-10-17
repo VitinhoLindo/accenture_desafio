@@ -1,9 +1,10 @@
 const { Router } = require('express');
+const { RootController } = require('../Http/Controllers')
 
 const route = Router();
 
 route.get('/', (request, response) => {
-  response.end();
+  RootController.using(request, response).get();
 });
 
 module.exports = route;
