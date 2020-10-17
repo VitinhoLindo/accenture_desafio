@@ -1,16 +1,26 @@
-class Config {
-  constructor() {}
+const Modules = require('../../resources/Modules');
 
-  static getConfig() {
-    const config = {
-      host: '127.0.0.1',
-      port: 3000
-    };
+class Config extends Modules {
+  config = {
+    host: '127.0.0.1',
+    port: 3000
+  }
 
-    if (process.env.HOST) config.host = process.env.HOST;
-    if (process.env.PORT) config.port = process.env.PORT;
+  constructor() { super(); }
 
-    return config;
+  getMaxRequestMinute() {
+    let value = this.process.env.MAX_REQUEST_MINUTE;
+
+    value = parseInt(value) || 100;
+
+    return value;
+  }
+
+  getConfig() {
+    if (this.process.env.HOST) this.config.host = this.process.env.HOST;
+    if (this.process.env.PORT) this.config.port = this.process.env.PORT;
+
+    return this.config;
   }
 }
 

@@ -1,8 +1,9 @@
 const { Router } = require('express');
-const { Root } = require('../api');
 
 const route = Router();
 
-route.use('/', Root);
+route.get('/', (request, response) => {
+  response.end();
+});
 
 module.exports = route;

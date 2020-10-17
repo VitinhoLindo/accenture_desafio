@@ -4,6 +4,7 @@ class Modules extends MyEvent {
   http    = require('http');
   https   = require('https');
   express = require('express')();
+  process = require('process');
 
   constructor() { super(); }
 }

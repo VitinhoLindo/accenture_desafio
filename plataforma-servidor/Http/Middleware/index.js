@@ -8,7 +8,7 @@ module.exports = (server = express(), app = Http()) => {
 
   var requests = {
     countable: 0,
-    max: 20
+    max: app.getMaxRequestMinute()
   };
 
   const openToRequest = () => {
@@ -26,6 +26,7 @@ module.exports = (server = express(), app = Http()) => {
   const body = (_request = request, _response = response) => {
     return new Promise((resolve) => {
       var data = '';
+
       _request.on('data', (chunk) => { if (chunk) data += chunk.toString('utf-8'); });
       _request.on('end', () => {
         try { _request.body = JSON.parse(data); }
@@ -57,10 +58,10 @@ module.exports = (server = express(), app = Http()) => {
     await body(_request, _response);
 
     // _request.__dirname = app.dirname;
-    // _request.getApp = getApp;
+    _request.getApp = getApp;
     next();
   };
 
-  // server.use(middleware);
-  // server.use(Router);
+  server.use(middleware);
+  server.use(Router);
 };

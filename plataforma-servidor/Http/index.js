@@ -1,12 +1,12 @@
 const Middleware = require('./Middleware');
 const Config     = require('./Config'); 
-const Modules    = require('../resources/Modules');
 
-class Server extends Modules {
+class Server extends Config {
 
+  constructor() { super(); }
 
   async listen() {
-    const serverConfig = Config.getConfig();
+    const serverConfig = this.getConfig();
 
     Middleware(this.express, this);
     const server = this.http.createServer(this.express);
