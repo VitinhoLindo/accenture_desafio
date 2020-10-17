@@ -165,6 +165,7 @@
     font-size:15px;
     position:absolute;
     background:#ccc;
+    cursor: pointer;
   }
   .btn-1,.btn-7,.btn-4,.btn-10{
     width:30px;

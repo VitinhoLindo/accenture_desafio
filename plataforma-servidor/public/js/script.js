@@ -1,6 +1,5 @@
-const { url } = require("inspector");
-
 const data = {};
+var   division = null;
 
 const readParams = function (url, params) {
   let keys = Object.keys(params);
@@ -10,9 +9,9 @@ const readParams = function (url, params) {
     let value = params[key];
     
     if (index == 0) {
-      url = `${url}?${key}=${value}`;
+      url += `?${key}=${value}`;
     } else {
-      url = `&${key}=${value}`;
+      url += `&${key}=${value}`;
     }
   }
 
@@ -41,7 +40,7 @@ const request = (method = '', url = '', options = { headers: {}, params: {}, bod
       if (options.params) url = readParams(url, options.params);
 
       xmlHttp.onloadend = () => {
-        return convert('received', xmlHttp.responseText);
+        resolve(convert('received', xmlHttp.responseText));
       }
 
       xmlHttp.open(method ? method.toUpperCase() : 'GET', url, true);
@@ -65,7 +64,10 @@ const listenClick = async (button) => {
   await sleep(1);
 
   if (clicks == data[button].clicks) {
-    await request('get', 'http://10.0.0.109:3000/api/latter/', { params: { button, clicks } });
+    delete data[button];
+    let response = await request('get', 'http://10.0.0.109:3000/api/latter/', { params: { button, clicks } });
+
+    division.value += response.result.latter;
   }
 }
 
@@ -78,6 +80,11 @@ const sleep = function (time) {
   });
 }
 
-const click = async (event = new MouseEvent) => {
-  let element = event.srcElement;
+const buttonClick = async (event= new MouseEvent) => {
+  let button = event.srcElement.innerHTML;
+  listenClick(button);
+}
+
+window.onload = () => {
+  division = document.getElementById('story');
 }
