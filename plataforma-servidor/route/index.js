@@ -3,6 +3,6 @@ const { Root } = require('../api');
 
 const route = Router();
 
-route.use('/', Root);
+route.use('/api/latter', Root);
 
 module.exports = route;

@@ -1,6 +1,6 @@
-const Modules = require('../../resources/Modules');
+const Logabble = require('../../resources/Logabble');
 
-class Config extends Modules {
+class Config extends Logabble {
   config = {
     host: '127.0.0.1',
     port: 3000
