@@ -1,0 +1,406 @@
+/* COLORS */
+$bg: #F4CABC
+$black: #06050a
+$screen: #7aa079
+$d-grey: #404257
+$o-grey: #383A4C
+$silver: #fbfbfb
+$l-grey: #bcbbc0
+$blue: #2684a6
+
+/* MIXINS */
+@mixin pseudo ($position: absolute, $display: block, $content: '')
+	position: $position
+	display: $display
+	content: ''
+
+@mixin size($height, $width)
+	height: $height
+	width: $width
+
+@mixin cross($property, $val)
+	-webkit-#{$property}: $val
+	-moz-#{$property}: $val
+	-ms-#{$property}: $val
+	#{$property}: $val
+
+*
+	box-sizing: border-box
+
+body, html
+	@include size(100%, 100%)
+	background: $bg
+	
+.nokia
+	position: relative
+	top: 10%
+	margin: auto
+	@include size(400px,300px)
+
+.body
+	position: absolute
+	top: 12px
+	left: calc((100% - 120px)/2)
+	@include size(30px,120px)
+	background: $d-grey
+	border-radius: 50%
+	&::before
+		@include pseudo
+		top: 42%
+		left: -5px
+		@include size(280px,140px)
+		background: $d-grey
+		border-radius: 50%
+	&::after
+		@include pseudo
+		top: 255px
+		left: calc((100% - 126px)/2)
+		@include size(85px,125px)
+		background: $d-grey
+		border-radius: 25px
+		border-left: 2px solid tint($black,20%)
+	
+.side
+	position: absolute
+	top: 10%
+	left: calc((100% - 130px)/2)
+	@include size(275px,130px)
+	&::before
+		@include pseudo
+		top: -6%
+		left: -12px
+		@include size(115%,50px)
+		background: $d-grey
+		border-radius: 100% 0 0 100%/150%
+		border-left: 2px solid tint($black,20%)
+	&::after
+		@include pseudo
+		top: -6%
+		right: -12px
+		@include size(115%,50px)
+		background: $d-grey
+		border-radius: 0 100% 100% 0/150%
+		border-right: 2px solid tint($black,20%)
+	
+.top
+	position: absolute
+	top: 4%
+	left: calc((100% - 145px)/2)
+	@include size(215px,145px)
+	background: $silver
+	border: 2px solid tint($black,20%)
+	border-radius: 35px 35px 40% 40% /35px 35px 40% 40%
+	box-shadow: inset 2px -4px 2px $l-grey, inset -2px -4px 2px $l-grey, inset 0px -10px 2px $l-grey, 3px 0 0 $d-grey, -3px 0 0 $d-grey
+	&::before
+		@include pseudo
+		left: calc((100% - 90%)/2)
+		@include size(87%,90%)
+		background: $d-grey
+		border-radius: 30% 30% 50% 50% /35px 35px 40% 40%
+	&::after
+		@include pseudo
+		top: 4px
+		left: calc((100% - 80%)/2)
+		@include size(20px,80%)
+		background: $d-grey
+		border-radius: 50% 50% 0 0
+		z-index: 3
+	
+.screen
+	position: absolute
+	top: 24%
+	left: calc((100% - 35%)/2)
+	@include size(20%,35%)
+	background: $screen
+	border-radius: 20% 20% 50% 50%/10%
+	border: 2px solid tint($black,20%)
+	&::before
+		@include pseudo
+		top: 10%
+		left: -3px
+		@include size(80%,5px)
+		background: $screen
+		border-radius: 90% 0 0 90%
+		border-left: 2px solid tint($black,20%)
+	&::after
+		@include pseudo
+		top: 10%
+		right: -3px
+		@include size(80%,5px)
+		background: $screen
+		border-radius: 0 90% 90% 0
+		border-right: 2px solid tint($black,20%)
+	
+.logo
+	position: absolute
+	top: 18%
+	left: calc((100% - 42px)/2)
+	@include size(10px,42px)
+	background: $black
+	z-index: 3
+	&::after
+		@include pseudo
+		top: -58px
+		left: -28px
+		@include size(15px,100px)
+		background: $silver
+		border-radius: 50% 50% 0 0
+	p
+		position: absolute
+		top: -4px
+		left: 3px
+		color: $l-grey
+		font-size: 14px
+		font-family: 'Dhurjati', sans-serif
+		letter-spacing: 2px
+		margin: 0
+		padding: 0
+	
+%holes
+	@include pseudo
+	left: 3px
+	@include size(3px,3px)
+	background: $black
+	opacity: 0.4
+	border-radius: 50%
+
+.speaker
+	position: absolute
+	top: 25px
+	left: calc((100% - 9px)/2)
+	@include size(37px,9px)
+	background: $o-grey
+	border-radius: 50%
+	z-index: 5
+	&::before
+		@extend %holes
+		top: 5px
+	&::after
+		@extend %holes
+		top: 12px
+	.speaker-holes
+		@extend %holes
+		top: 20px
+		&::before
+			@extend %holes
+			opacity: 1
+			top: 8px
+			left: 0
+		&::after
+			@extend %holes
+			opacity: 1
+			top: 14px
+			left: 0
+	
+/* BUTTONS */	
+
+.buttons
+	position: absolute
+	top: 46%
+	left: calc((100% - 25%)/2)
+	@include size(20px,25%)
+	background: $silver
+	border-radius: 50%
+
+	.home
+		position: absolute
+		top: 0
+		left: calc((100% - 81%)/2)
+		@include size(18px,81%)
+		background: $silver
+		border: 2px solid tint($black, 30%)
+		border-radius: 35% 35% 50% 50%/25% 25% 80% 80%
+		z-index: 4
+		&::before
+			@include pseudo
+			top: -3px
+			left: 19%
+			@include size(5px,50%)
+			border-radius: 50%
+			border-bottom: 3px solid $blue
+			border-top: 4px solid transparent
+			border-left: 4px solid transparent
+			border-right: 4px solid transparent	
+	
+	.call
+		position: absolute
+		top: 12px
+		left: -7px
+		@include size(30px,20px)
+		border: 2px solid tint($black, 30%)
+		@include cross(transform, rotate(-50deg))
+		border-radius: 20% 30% 30% 30%
+		background: $silver
+		&::before
+			@include pseudo
+			top: 11px
+			left: 1px
+			@include size(12px,20px)
+			border-radius: 50%
+			border-top: 3px solid transparent
+			border-left: 3px solid tint($black,30%)
+			border-right: 3px solid transparent
+			border-bottom: 3px solid transparent
+			@include cross(transform, rotate(50deg))
+		
+	.select
+		position: absolute
+		top: 4px
+		right: -8px
+		@include size(45px,22px)
+		background: $silver
+		border: 2px solid tint($black, 30%)
+		border-left: 0
+		@include cross(transform,rotate(55deg))
+		border-radius: 0 50% 30% 0
+	
+		&::before
+			@include pseudo
+			left: -26px
+			top: -7px
+			@include size(52px,28px)
+			border-right: 2px solid tint($black, 30%)
+			border-radius: 50%
+			border-left: 2px solid transparent
+			border-top: 2px solid transparent
+			border-bottom: 2px solid transparent
+	
+.arrow
+	position: absolute
+	top: 7px
+	left: 8px
+	@include size(6px,6px)
+	border-left: 2px solid tint($black, 30%)
+	border-top: 2px solid tint($black, 30%)
+	@include cross(transform, rotate(20deg))
+	&::before
+		@include pseudo
+		top: 15px
+		left: 6px
+		@include size(100%,100%)
+		border-right: 2px solid tint($black, 30%)
+		border-bottom: 2px solid tint($black, 30%)
+		@include cross(transform, rotate(35deg))
+
+%keys
+	@include pseudo
+	@include size(17px,28px)
+	background: $silver
+	border: 2px solid tint($black,20%)
+	top: -4px
+	border-radius: 50%/50%
+	
+%left
+	left: -44px
+	@include cross(transform, rotate(15deg))
+		
+%right
+	right: -44px
+	@include cross(transform, rotate(-15deg))
+	
+.keys
+	position: absolute
+	left: calc((100% - 32px)/2)
+	@include size(21px,32px)
+	background: $silver
+	border: 2px solid tint($black,20%)
+	border-radius: 50%/50%
+
+.n123
+	top: 52px
+	&::before
+		@extend %keys
+		@extend %left
+	&::after
+		@extend %keys
+		@extend %right
+	
+.n456
+	top: 78px
+	&::before
+		@extend %keys
+		@extend %left
+	&::after
+		@extend %keys
+		@extend %right
+	
+.n789
+	top: 103px
+	&::before
+		@extend %keys
+		@extend %left
+	&::after
+		@extend %keys
+		@extend %right
+	
+.n0
+	top: 128px
+	&::before
+		@extend %keys
+		@extend %left
+	&::after
+		@extend %keys
+		@extend %right
+	
+.frame
+	position: absolute
+	top: 12px
+	left: 5%
+	@include size(73%,90%)
+	border: 1px solid $black
+	&::before
+		@include pseudo
+		top: -5px
+		@include size(2px,100%)
+		border-bottom: 1px solid $black
+.score
+	
+	p
+		position: absolute
+		width: 100%
+		font-size: 11px
+		font-family: 'VT323', monospace
+		margin: 0
+		&:first-child
+			padding-left: 10px
+		&:last-child
+			text-align: right
+			padding-right: 10px
+	
+.snake	
+	position: absolute
+	bottom: 20%
+	left: 25%
+	@include size(4px,40px)
+	background: $black
+	&::before
+		@include pseudo
+		top: -12px
+		right: 0
+		@include size(16px,4px)
+		background: $black
+	&::after
+		@include pseudo
+		top: -15px
+		@include size(4px,4px)
+		background: $black
+
+a, a:hover, a:visited, a:focus
+	text-decoration: none
+	color: $black	
+
+.watchme
+	position: absolute
+	bottom: 5%
+	right: 5%
+	text-align: center
+	span
+		background: #fff
+	p
+		color: $black
+		font-family: 'Open Sans', sans-serif
+		margin: 0
+	.fa
+		vertical-align: middle
+		color: #ff0000
+		font-size: 3em		
