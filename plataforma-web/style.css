@@ -71,12 +71,11 @@
     resize: none;
     position: absolute;
     top: 35%;
-	border-radius: 5px 5px 10px 10px/20px;
-    left: 8%;
+	  border-radius: 5px 5px 10px 10px/20px;
+    left: 10%;
     right: 8%;
-	width: 100px;
-    height: 66px;
-    border: 1px solid #888; 
+	  width: 100px;
+    height: 66px; 
   }
   .middle-btn{
     position:absolute;
