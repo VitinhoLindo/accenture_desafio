@@ -1,0 +1,11 @@
+{
+  "name": "plataforma-servidor",
+  "version": "0.1.0",
+  "description": "servidor celular",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.ks"
+  },
+  "author": "",
+  "license": "ISC"
+}
