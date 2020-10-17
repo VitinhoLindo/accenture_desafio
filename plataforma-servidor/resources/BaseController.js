@@ -83,7 +83,6 @@ class BaseController {
   }
 
   sendFile(path) {
-    console.log(path);
     this.response.sendFile(path, (err) => {
       if (err == undefined) this.resEnd();
       else {

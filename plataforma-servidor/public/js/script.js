@@ -73,6 +73,7 @@ const listenClick = async (button) => {
 
 const sleep = function (time) {
   time = parseFloat(time) || 1;
+  time *= 1000;
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
@@ -82,6 +83,7 @@ const sleep = function (time) {
 
 const buttonClick = async (event= new MouseEvent) => {
   let button = event.srcElement.innerHTML;
+  button = parseInt(button);
   listenClick(button);
 }
 
