@@ -2,6 +2,7 @@ const Middleware = require('./Middleware');
 const Config     = require('./Config'); 
 
 class Server extends Config {
+  __dirname = '';
 
   constructor() { super(); }
 
@@ -16,8 +17,9 @@ class Server extends Config {
   }
 }
 
-module.exports = () => {
+module.exports = (dir) => {
   let server = new Server();
+  server.__dirname = dir;
 
   return server;
 };

@@ -1,3 +1,6 @@
 module.exports = {
-  Root: require('./Root')
+  Root: require('./Root'),
+  Html: require('./HtmlRoute'),
+  Css: require('./CssRoute'),
+  Js: require('./JsRoute')
 }
