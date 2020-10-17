@@ -1,5 +1,5 @@
 const Router = require('../../route');
-const Http = require('../../http');
+const Http = require('../../Http');
 const express = require('express');
 const { request } = require('express');
 
@@ -8,7 +8,7 @@ module.exports = (server = express(), app = Http()) => {
 
   var requests = {
     countable: 0,
-    max: app.getMaxRequest()
+    max: 20
   };
 
   const openToRequest = () => {
@@ -56,11 +56,11 @@ module.exports = (server = express(), app = Http()) => {
 
     await body(_request, _response);
 
-    _request.__dirname = app.dirname;
-    _request.getApp = getApp;
+    // _request.__dirname = app.dirname;
+    // _request.getApp = getApp;
     next();
   };
 
-  server.use(middleware);
-  server.use(Router);
+  // server.use(middleware);
+  // server.use(Router);
 };
